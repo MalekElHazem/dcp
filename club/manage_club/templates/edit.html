@@ -1,0 +1,102 @@
+
+{% extends 'layout.html' %}
+
+{% block body %}
+{% load static %}
+<div class="hero_area">
+
+  <div class="hero_bg_box">
+    <div class="bg_img_box">
+      <img src="{% static 'images/hero-bgl.png' %}" alt="">
+    </div>
+  </div>
+
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            CAO
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav  ">
+
+              <li class="nav-item">
+                <a class="nav-link" href="/loginaction/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/events/"> Events</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/members/">Members</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/"> <i class="fa fa-user" aria-hidden="true"></i> Logout</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+    <form method="POST" action="/update/{{ member.id }}">
+        {% csrf_token %}
+        <div class="table-responsive mt-5">
+          <table class="table table-striped table-bordered table-hover mx-auto" style="width: 14%;">
+            <thead class="bg-danger text-light">
+        <div>
+            <br>
+            <p>
+              <tr><th><h3>Update Details</h3></th></tr>
+            </p>
+        </div>
+      </thead>
+      <tbody class="thead-light bg-light">
+        <div>
+          <tr><th><p>First Name:</p></h3></th></tr>
+            <div>
+              <tr><th><input type="text" name="mFname" value="{{member.mFname}}" /></th></tr>
+            </div>
+        </div>
+        <div>
+          <tr><th><p>Last Name:</p></th></tr>
+            <div>
+              <tr><th><input type="text" name="mLname" value="{{member.mLname}}" /></th></tr>
+            </div>
+        </div>
+        <div>
+          <tr><th><p>Email Adresse:</p></th></tr>
+            <div>
+              <tr><th><input type="email" name="memail" value="{{member.memail}}" /></th></tr>
+            </div>
+        </div>
+        <div>
+          <tr><th><p>Phone Number:</p></th></tr>
+            <div>
+              <tr><th><input type="text" name="mphone" value="{{member.mphone}}" /></th></tr>
+            </div>
+        </div>
+        <div>
+          <tr><th><p>Department:</p></th></tr>
+            <div>
+              <tr><th><input type="text" name="mdep" value="{{member.mdep}}" /></th></tr>
+            </div>
+        </div>
+        <div>
+            <br><tr><th><div class="container text-center mt-5">
+              <button type="submit" class="btn-primary mx-auto">Update</button>
+          </div></th></tr>
+           
+        </div>
+      </tbody>
+    </table>
+    </form>
+  {% endblock %}
+    

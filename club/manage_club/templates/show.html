@@ -1,0 +1,36 @@
+
+{% extends 'index1.html' %}
+
+{% block body %}
+    <h1>Members</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name:</th>
+                <th>Last Name:</th>
+                <th>Email Adresse:</th>
+                <th>Phone Number:</th>
+                <th>Department:</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr>
+                <td> {{ member.mFname }}</td>
+                <td> {{ member.mLname }}</td>
+                <td> {{ member.memail }}</td>
+                <td> {{ member.mphone }}</td>
+                <td> {{ member.mdep }}</td>
+                <td>
+                    <a href="/edit/{{ member.id }}">Edit</a>
+                    <a href="/delete/{{ member.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <button><a style="color:rgb(255, 0, 0);" href="/emp">Add New Record</a></button>
+{% endblock %}

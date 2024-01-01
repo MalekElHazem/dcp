@@ -1,0 +1,115 @@
+
+{% extends 'layout.html' %}
+
+{% block body %}
+{% load static %}
+<div class="hero_area">
+
+  <div class="hero_bg_box">
+    <div class="bg_img_box">
+      <img src="{% static 'images/hero-bgl.png' %}" alt="">
+    </div>
+  </div>
+
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            CAO
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav  ">
+
+              <li class="nav-item">
+                <a class="nav-link" href="/loginaction/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/events/"> Events</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/members/">Members</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/"> <i class="fa fa-user" aria-hidden="true"></i> Logout</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- work section -->
+  <section class="work_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+      
+      </section>
+  
+
+      
+      <div class="container text-center mt-5">
+        <h1 class="display-4 text-light">Events</h1>
+    </div>
+    <div class="table-responsive mt-5">
+      <table class="table table-striped table-bordered table-hover mx-auto" style="width: 80%;">
+        <thead class="bg-danger text-light">
+              <tr>
+                  <th>Title:</th>
+                  <th>Description:</th>
+                  <th>Photo:</th>
+                  <th>Date debut:</th>
+                  <th>Date Fin:</th>
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody class="thead-light bg-light">
+            {% for event in events %}
+            <tr class="text-dark thead-light">
+                <td> {{ event.title }}</td>
+                <td> {{ event.description }}</td>
+                <td> {{ event.photo }}</td>
+                <td> {{ event.dateD }}</td>
+                <td> {{ event.dateF }}</td>
+                <td>
+                    <a href="/edit_event/{{ event.id }}"><button type="submit" class="btn-primary mx-auto">Edit</button></a>
+                    <a href="/delete_event/{{ event.id }}"><button type="submit" class="btn-danger mx-auto">Delete</button></a>
+                    <a href="/event_details/{{ event.id }}"><button type="submit" class="btn-info mx-auto">Details</button></a>  <!-- New button for event details -->
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        
+      </table>
+      <br>
+      <br> <!-- end do section -->
+      </div>
+    </div>
+  </section>
+
+  <section class="who_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="detail-box">
+            <div>
+              <a href="/add_event/">
+                Add Event
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end work section -->
+  {% endblock %}

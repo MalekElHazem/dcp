@@ -1,0 +1,110 @@
+
+{% extends 'layout.html' %}
+
+{% block body %}
+{% load static %}
+<div class="hero_area">
+
+  <div class="hero_bg_box">
+    <div class="bg_img_box">
+      <img src="{% static 'images/hero-bgl.png' %}" alt="">
+    </div>
+  </div>
+
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            CAO
+          </span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav  ">
+
+              <li class="nav-item">
+                <a class="nav-link" href="/loginaction/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/events/"> Events</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/members/">Members</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/"> <i class="fa fa-user" aria-hidden="true"></i> Logout</a>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+
+ 
+  <div class="container text-center mt-5">
+    <h1 class="display-4 text-light">Members</h1>
+</div>
+
+  <div class="table-responsive mt-5">
+  <table class="table table-striped table-bordered table-hover mx-auto" style="width: 80%;">
+    <thead class="bg-danger text-light">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th>Phone Number</th>
+            <th>Department</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody class="thead-light bg-light">
+        {% for member in members %}
+        <tr class="text-dark thead-light">
+            <td>{{ member.mFname }}</td>
+            <td>{{ member.mLname }}</td>
+            <td>{{ member.memail }}</td>
+            <td>{{ member.mphone }}</td>
+            <td>{{ member.mdep }}</td>
+            <td>
+                <a href="/edit/{{ member.id }}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="/delete/{{ member.id }}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</div>
+<section class="who_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="detail-box">
+          <div>
+            <a href="/emp">
+            
+            
+            <button type="button" class="button5">
+              <span class="button__text">Add Member</span>
+              <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
+            </button>
+          </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <br>
+  <br> <!-- end do section -->
+  {% endblock %}
